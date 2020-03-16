@@ -9,8 +9,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject private var newsListViewModel = NewsListViewModel()
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            List(newsListViewModel.newsList){ post in
+                HStack {
+                    Text(post.id)
+                    Text(post.title)
+                }
+            }
+        }
     }
 }
 

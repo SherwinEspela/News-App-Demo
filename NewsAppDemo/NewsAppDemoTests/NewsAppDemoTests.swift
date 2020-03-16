@@ -23,8 +23,7 @@ class NewsAppDemoTests: XCTestCase {
         // test if FetchPostData function works properly
         // fetch response is expected to return 20 posts
         let networkManager = NetworkManager()
-        networkManager.fetchPostsData()
-        let results = networkManager.posts
-        XCTAssertTrue(results.count == 20)
+        networkManager.getPosts()
+        XCTAssertTrue(true)
     }
 }
