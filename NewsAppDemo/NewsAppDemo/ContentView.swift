@@ -9,8 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    let networkManager = NetworkManager()
+    
     var body: some View {
+    
         Text("Hello, World!")
+        
+            .onAppear {
+                self.networkManager.getPosts()
+        }
     }
 }
 
