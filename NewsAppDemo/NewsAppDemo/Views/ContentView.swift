@@ -15,11 +15,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(newsListViewModel.newsList){ post in
-                HStack {
-                    Text(post.id)
-                    Text(post.title)
+                NavigationLink(destination: NewsDetailView(urlString: post.url)) {
+                    HStack {
+                        Text(post.id)
+                        Text(post.title)
+                    }
                 }
             }
+        .navigationBarTitle("MAIN PAGE")
         }
     }
 }
