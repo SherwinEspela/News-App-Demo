@@ -15,12 +15,22 @@ struct NewsCell: View {
     let title: String
     
     var body: some View {
-        NavigationLink(destination: NewsDetailView(urlString: urlString)) {
-            HStack {
+        ZStack {
+            
+            Image("testImage")
+                .resizable()
+                .scaledToFit()
+            
+            VStack {
                 Text(id)
                 Text(title)
             }
+            
+            NavigationLink(destination: NewsDetailView(urlString: urlString)) {
+                EmptyView()
+            }.buttonStyle(PlainButtonStyle())
         }
+        
     }
 }
 
