@@ -9,15 +9,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @ObservedObject private var newsListViewModel = NewsListViewModel()
-    let offsetEdgePadding: CGFloat = -20
-    
     var body: some View {
         NavigationView {
-            List(newsListViewModel.newsList){ post in
-                NewsCell(urlString: post.url, id: post.id, title: post.title)
-            }.padding(EdgeInsets(top: .zero, leading: offsetEdgePadding, bottom: .zero, trailing: offsetEdgePadding))
+            NewsListView()
         }
     }
 }
