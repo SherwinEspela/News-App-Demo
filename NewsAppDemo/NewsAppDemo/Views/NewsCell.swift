@@ -15,27 +15,37 @@ struct NewsCell: View {
     let title: String
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             
             Image("testImage")
                 .resizable()
                 .scaledToFit()
             
-            VStack {
-                Text(id)
+            VStack(alignment: .leading, spacing: 7) {
+                Spacer()
+                
+                Text("HEADLINE")
+                    .padding(3)
+                    .foregroundColor(.white)
+                    .background(Color.red)
+                    .font(.headline)
+                
                 Text(title)
-            }
+                    .foregroundColor(.white)
+                    .font(.headline)
+                    .fontWeight(.bold)
+            }.padding(20)
             
             NavigationLink(destination: NewsDetailView(urlString: urlString)) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle())
         }
-        
     }
 }
 
 struct NewsCell_Previews: PreviewProvider {
     static var previews: some View {
-        NewsCell(urlString: "urlString", id: "id", title: "title")
+        NewsCell(urlString: "urlString", id: "id", title: "slkfjsd slkjdf slkjsdf sdlfjs fsfsjfjls")
+            .previewLayout(.sizeThatFits)
     }
 }
