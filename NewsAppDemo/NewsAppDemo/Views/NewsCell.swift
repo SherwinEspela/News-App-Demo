@@ -15,31 +15,69 @@ struct NewsCell: View {
     let title: String
     
     var body: some View {
-        ZStack(alignment: .leading) {
-            
-            Image("testImage")
-                .resizable()
-                .scaledToFit()
-            
-            VStack(alignment: .leading, spacing: 7) {
-                Spacer()
+        VStack {
+            ZStack(alignment: .leading) {
                 
-                Text("HEADLINE")
-                    .padding(3)
-                    .foregroundColor(.white)
-                    .background(Color.red)
-                    .font(.headline)
+                Image("testImage")
+                    .resizable()
+                    .scaledToFit()
                 
-                Text(title)
-                    .foregroundColor(.white)
-                    .font(.headline)
-                    .fontWeight(.bold)
-            }.padding(20)
+                VStack(alignment: .leading, spacing: 7) {
+                    Spacer()
+                    
+                    Text("BREAKING NEWS")
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .padding(4)
+                        .foregroundColor(.white)
+                        .background(Color.red)
+                    
+                    Text(title)
+                        .foregroundColor(.white)
+                        .font(.title)
+
+                }.padding(20)
+                
+                NavigationLink(destination: NewsDetailView(urlString: urlString)) {
+                    EmptyView()
+                }.buttonStyle(PlainButtonStyle())
+            }
             
-            NavigationLink(destination: NewsDetailView(urlString: urlString)) {
-                EmptyView()
-            }.buttonStyle(PlainButtonStyle())
+            ActionArea()
         }
+    }
+}
+
+struct ActionAreaButton: View {
+    
+    let iconName: String
+    let action: () -> ()
+    
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: iconName)
+                .font(.callout)
+                .foregroundColor(.black)
+        }
+        
+        .padding(10)
+    }
+}
+
+struct ActionArea: View {
+    
+    var body: some View {
+        HStack {
+            Text("2h")
+                .font(.callout)
+                .foregroundColor(.red)
+            Spacer()
+            ActionAreaButton(iconName: "square.and.arrow.up", action: {})
+            ActionAreaButton(iconName: "bookmark", action: {})
+        }
+        .frame(height: 50)
+        .background(Color.white)
+        .padding(EdgeInsets(top: -5, leading: 20, bottom: -5, trailing: 20))
     }
 }
 
