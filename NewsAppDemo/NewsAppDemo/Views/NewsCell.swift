@@ -78,6 +78,10 @@ struct ActionArea: View {
         .frame(height: 50)
         .background(Color.white)
         .padding(EdgeInsets(top: -5, leading: 20, bottom: -5, trailing: 20))
+        
+        .onTapGesture {
+            // disables tap gesture on Action Area
+        }
     }
 }
 

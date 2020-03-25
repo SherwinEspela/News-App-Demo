@@ -9,16 +9,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @ObservedObject private var newsListViewModel = NewsListViewModel()
-    let offsetEdgePadding: CGFloat = -20
-    
     var body: some View {
-        NavigationView {
-            List(newsListViewModel.newsList){ post in
-                NewsCell(urlString: post.url, id: post.id, title: post.title)
-            }.padding(EdgeInsets(top: .zero, leading: offsetEdgePadding, bottom: .zero, trailing: offsetEdgePadding))
-        }
+        NewsListView()
+    }
+}
+
+extension UINavigationController {
+    override open func viewDidLoad() {
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.backgroundColor = UIColor.red
+
+        let scrollEdgeAppearance = UINavigationBarAppearance()
+        scrollEdgeAppearance.backgroundColor = UIColor.red
+
+        let compactAppearance = UINavigationBarAppearance()
+        compactAppearance.backgroundColor = UIColor.red
+
+        navigationBar.standardAppearance = standardAppearance
+        navigationBar.scrollEdgeAppearance = scrollEdgeAppearance
+        navigationBar.compactAppearance = compactAppearance
     }
 }
 
