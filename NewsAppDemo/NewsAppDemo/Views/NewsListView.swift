@@ -19,12 +19,26 @@ struct NewsListView: View {
 
         // To remove all separators including the actual ones:
         UITableView.appearance().separatorStyle = .none
+        
+        // FIXME: try solution mention on this link
+        // https://stackoverflow.com/questions/56505528/swiftui-update-navigation-bar-title-color
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     var body: some View {
-        List(newsListViewModel.newsList){ post in
-            NewsCell(urlString: post.url, id: post.id, title: post.title)
-        }.padding(EdgeInsets(top: .zero, leading: offsetEdgePadding, bottom: .zero, trailing: offsetEdgePadding))
+        NavigationView {
+            List(newsListViewModel.newsList){ post in
+                NewsCell(urlString: post.url, id: post.id, title: post.title)
+            }.padding(EdgeInsets(top: .zero, leading: offsetEdgePadding, bottom: .zero, trailing: offsetEdgePadding))
+            
+            .navigationBarTitle(
+                Text("MAIN")
+                    .foregroundColor(.white),
+                displayMode: .inline
+            )
+        
+            .background(Color.white)
+        }
     }
 }
 

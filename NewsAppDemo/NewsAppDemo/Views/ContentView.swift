@@ -10,9 +10,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            NewsListView()
-        }
+        NewsListView()
+    }
+}
+
+extension UINavigationController {
+    override open func viewDidLoad() {
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.backgroundColor = UIColor.red
+
+        let scrollEdgeAppearance = UINavigationBarAppearance()
+        scrollEdgeAppearance.backgroundColor = UIColor.red
+
+        let compactAppearance = UINavigationBarAppearance()
+        compactAppearance.backgroundColor = UIColor.red
+
+        navigationBar.standardAppearance = standardAppearance
+        navigationBar.scrollEdgeAppearance = scrollEdgeAppearance
+        navigationBar.compactAppearance = compactAppearance
     }
 }
 
