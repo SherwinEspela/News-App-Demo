@@ -71,13 +71,14 @@ struct ActionArea: View {
             Text("2h")
                 .font(.callout)
                 .foregroundColor(.red)
+                .padding(.leading)
             Spacer()
             ActionAreaButton(iconName: "square.and.arrow.up", action: {})
-            ActionAreaButton(iconName: "bookmark", action: {})
+            ActionAreaButton(iconName: "bookmark", action: {}).padding(.trailing)
         }
         .frame(height: 50)
-        .background(Color.white)
-        .padding(EdgeInsets(top: -5, leading: 20, bottom: -5, trailing: 20))
+        .background(Color.clear)
+        .padding(EdgeInsets(top: -5, leading: 0, bottom: -5, trailing: 0))
         
         .onTapGesture {
             // disables tap gesture on Action Area
