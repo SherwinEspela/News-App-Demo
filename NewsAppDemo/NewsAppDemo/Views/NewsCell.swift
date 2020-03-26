@@ -16,14 +16,17 @@ struct NewsCell: View {
     let dateCreated: String
     
     var body: some View {
-        print("date created = ", self.dateCreated)
         
-        return VStack {
+        VStack {
             ZStack(alignment: .leading) {
                 
                 Image("testImage")
                     .resizable()
                     .scaledToFit()
+                    
+                Rectangle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .center, endPoint: .bottom))
+                    .blendMode(.multiply)
                 
                 VStack(alignment: .leading, spacing: 7) {
                     Spacer()
@@ -54,6 +57,6 @@ struct NewsCell: View {
 struct NewsCell_Previews: PreviewProvider {
     static var previews: some View {
         NewsCell(urlString: "urlString", id: "id", title: "test title", dateCreated: "date" )
-            .previewLayout(.sizeThatFits)
+            .previewLayout(.sizeThatFits).fixedSize()
     }
 }
