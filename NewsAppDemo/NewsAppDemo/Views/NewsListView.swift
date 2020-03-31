@@ -27,8 +27,8 @@ struct NewsListView: View {
     
     var body: some View {
         NavigationView {
-            List(newsListViewModel.newsList){ post in
-                NewsCell(urlString: post.url, id: post.id, title: post.title, dateCreated: post.created_at ).buttonStyle(PlainButtonStyle())
+            List(newsListViewModel.newsList){
+                NewsCell(post: $0).buttonStyle(PlainButtonStyle())
             }.padding(EdgeInsets(top: .zero, leading: offsetEdgePadding, bottom: .zero, trailing: offsetEdgePadding))
             
             .navigationBarTitle(

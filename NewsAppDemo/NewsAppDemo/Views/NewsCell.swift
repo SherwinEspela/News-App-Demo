@@ -10,10 +10,7 @@ import SwiftUI
 
 struct NewsCell: View {
     
-    let urlString: String?
-    let id: String
-    let title: String
-    let dateCreated: String
+    let post: Post
     
     var body: some View {
         
@@ -31,32 +28,27 @@ struct NewsCell: View {
                 VStack(alignment: .leading, spacing: 7) {
                     Spacer()
                     
-                    Text("BREAKING NEWS")
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                        .padding(4)
-                        .foregroundColor(.white)
-                        .background(Color.red)
+                    NewsTag(tagType: post.tag)
                     
-                    Text(title)
+                    Text(post.title)
                         .foregroundColor(.white)
                         .font(.title)
 
                 }.padding(20)
                 
-                NavigationLink(destination: NewsDetailView(urlString: urlString)) {
+                NavigationLink(destination: NewsDetailView(urlString: post.url)) {
                     EmptyView()
                 }.buttonStyle(PlainButtonStyle())
             }
             
-            ActionArea(dateCreatedString: dateCreated)
+            ActionArea(dateCreatedString: post.created_at)
         }
     }
 }
 
 struct NewsCell_Previews: PreviewProvider {
     static var previews: some View {
-        NewsCell(urlString: "urlString", id: "id", title: "test title", dateCreated: "date" )
-            .previewLayout(.sizeThatFits).fixedSize()
+        let post = Post(objectID: "", points: 1, title: "Test title", url: "", created_at: "date")
+        return NewsCell(post: post).previewLayout(.sizeThatFits).fixedSize()
     }
 }

@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 struct Results: Decodable {
     let hits: [Post]
 }
@@ -23,4 +21,19 @@ struct Post: Decodable, Identifiable {
     let title: String
     let url: String?
     let created_at: String
+    let tag: TagType = TagType.RandomTagType
+}
+
+enum TagType: String, Decodable, CaseIterable {
+    case breakingNews = "Breaking News"
+    case developingStory = "Developing Story"
+    case opinion = "Opinion"
+    case liveUpdates = "Live Updates"
+    case factCheck = "Fact Check"
+    case analysis = "Analysis"
+    case none
+    
+    static var RandomTagType: TagType {
+        return TagType.allCases.randomElement()!
+    }
 }
